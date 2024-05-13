@@ -1,10 +1,27 @@
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Button, ButtonGroup, Grid, GridItem, Show } from '@chakra-ui/react'
+import NavBar from './components/NavBar'
+import GameGrid from './components/GameGrid'
+import GenreList from './components/GenreList'
 
 function App() {
   return (
-    <div className='mt-3'>
-      <Button colorScheme='blue'>Button</Button>
-    </div>
+    <Grid
+      templateAreas={{
+        base: `"nav" "main"`,
+        lg: `"nav nav" "aside main"`,
+      }}>
+      <GridItem area='nav'>
+        <NavBar />
+      </GridItem>
+      <Show above='lg'>
+        <GridItem area='aside' padding={5}>
+          <GenreList />
+        </GridItem>
+      </Show>
+      <GridItem area='main'>
+        <GameGrid />
+      </GridItem>
+    </Grid>
   )
 }
 
