@@ -4,6 +4,7 @@ import GameCard from './GameCard'
 import GameCardSkeleton from './GameCardSkeleton'
 import GameCardContainer from './GameCardContainer'
 import { Genre } from '../hooks/useGenre'
+import PlatformSelector from './PlatformSelector'
 
 interface Props {
   selectedGenre: Genre | null
@@ -15,6 +16,8 @@ const GameGrid = ({ selectedGenre }: Props) => {
   return (
     <>
       {error && <Text>{error}</Text>}
+      <PlatformSelector />
+
       <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 5 }} padding='10px' spacing={5}>
         {isLoading &&
           skeletons.map((id) => (
